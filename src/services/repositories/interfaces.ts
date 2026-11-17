@@ -1,4 +1,4 @@
-import type { AcceptedJobContactDto, Business, CreateRequestInput, CustomerServiceRequestDto, DemoSession, OfferDto, PublicBusinessDto, ServiceCategory, ServiceRequestPreviewDto } from '../../types/domain'
+import type { AcceptedJobContactDto, Business, CreateRequestInput, CustomerServiceRequestDto, OfferDto, PublicBusinessDto, ServiceCategory, ServiceRequestPreviewDto } from '../../types/domain'
 export interface ServiceRequestRepository {
  categories(): Promise<ServiceCategory[]>
  list(): Promise<(CustomerServiceRequestDto | ServiceRequestPreviewDto)[]>
@@ -13,4 +13,4 @@ export interface OfferRepository {
  acceptedBusinessContact(requestId: string): Promise<Pick<Business,'name'|'phone'|'email'>>
 }
 export interface BusinessRepository { list(): Promise<PublicBusinessDto[]> }
-export interface AuthRepository { session(): DemoSession; switchRole(role: DemoSession['role']): void }
+export type { AuthRepository } from '../../types/auth'

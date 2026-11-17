@@ -1,3 +1,4 @@
+import { Link } from '@tanstack/react-router'
 import { useState } from 'react'
 import { Minus, Plus } from 'lucide-react'
 import { Reveal } from '../../../components/ui/primitives'
@@ -12,5 +13,5 @@ const questions = [
 ]
 export function HomeFaq() {
   const [open, setOpen] = useState<number | null>(0)
-  return <section id="fragen" className="home-faq container" aria-labelledby="faq-heading"><Reveal className="home-faq-intro"><span className="home-eyebrow">GUT ZU WISSEN</span><h2 id="faq-heading">Noch Fragen?<br />Wir machen’s einfach.</h2><p>Die wichtigsten Antworten, bevor dein Projekt losgeht.</p><a href="/dashboard">Werkly als Kund:in ausprobieren <span aria-hidden="true">↗</span></a></Reveal><div className="home-faq-list">{questions.map(([question, answer], index) => <div className={`home-faq-item${open === index ? ' is-open' : ''}`} key={question}><h3><button id={`faq-question-${index}`} aria-expanded={open === index} aria-controls={`faq-answer-${index}`} onClick={() => setOpen(open === index ? null : index)}>{question}{open === index ? <Minus size={18} /> : <Plus size={18} />}</button></h3><div id={`faq-answer-${index}`} role="region" aria-labelledby={`faq-question-${index}`} hidden={open !== index}><p>{answer}</p></div></div>)}</div></section>
+  return <section id="fragen" className="home-faq container" aria-labelledby="faq-heading"><Reveal className="home-faq-intro"><span className="home-eyebrow">GUT ZU WISSEN</span><h2 id="faq-heading">Noch Fragen?<br />Wir machen’s einfach.</h2><p>Die wichtigsten Antworten, bevor dein Projekt losgeht.</p><Link to="/dashboard">Werkly als Kund:in ausprobieren <span aria-hidden="true">↗</span></Link></Reveal><div className="home-faq-list">{questions.map(([question, answer], index) => <div className={`home-faq-item${open === index ? ' is-open' : ''}`} key={question}><h3><button id={`faq-question-${index}`} aria-expanded={open === index} aria-controls={`faq-answer-${index}`} onClick={() => setOpen(open === index ? null : index)}>{question}{open === index ? <Minus size={18} /> : <Plus size={18} />}</button></h3><div id={`faq-answer-${index}`} role="region" aria-labelledby={`faq-question-${index}`} hidden={open !== index}><p>{answer}</p></div></div>)}</div></section>
 }

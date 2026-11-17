@@ -3,7 +3,7 @@ export type OfferStatus = 'SUBMITTED' | 'ACCEPTED' | 'REJECTED' | 'WITHDRAWN'
 export type OfferPriceType = 'FIXED' | 'ESTIMATE'
 export interface User { id: string; role: 'CUSTOMER' | 'BUSINESS'; name: string }
 export interface Business { id: string; userId: string; name: string; email: string; phone: string }
-export interface BusinessProfile { id: string; name: string; categoryId: string; description: string; location: string }
+export interface BusinessProfile { id: string; name: string; categoryId: string; description: string; location: string; categoryIds?: string[]; regionId?: string }
 export type PublicBusinessDto = BusinessProfile
 export interface ServiceCategory { id: string; name: string; icon: string; description: string }
 export interface ServiceRegion { id: string; name: string; postalCodes: string[]; active: boolean; areaLabel: string }
