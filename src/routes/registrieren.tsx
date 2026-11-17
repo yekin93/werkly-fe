@@ -1,3 +1,5 @@
-import { createFileRoute } from '@tanstack/react-router'
-import { AuthPage } from '../features/auth/components/auth-page'
-export const Route=createFileRoute('/registrieren')({validateSearch:(s:Record<string,unknown>)=>({role:s.role==='BUSINESS'?'BUSINESS' as const:'CUSTOMER' as const}),component:()=>{const {role}=Route.useSearch();return <AuthPage register initialRole={role}/>}})
+import { createFileRoute, redirect } from '@tanstack/react-router'
+export const Route = createFileRoute('/registrieren')({
+  validateSearch: (search: Record<string, unknown>) => ({ role: search.role === 'BUSINESS' ? 'BUSINESS' : undefined }),
+  beforeLoad: ({ search }) => { throw redirect({ to: search.role === 'BUSINESS' ? '/register/business' : '/register' }) },
+})

@@ -17,7 +17,11 @@ import { Route as BildnachweiseRouteImport } from './routes/bildnachweise'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as DatenschutzRouteImport } from './routes/datenschutz'
 import { Route as ImpressumRouteImport } from './routes/impressum'
+import { Route as LoginRouteImport } from './routes/login'
 import { Route as RegistrierenRouteImport } from './routes/registrieren'
+import { Route as BetriebDashboardRouteImport } from './routes/betrieb_.dashboard'
+import { Route as RegisterIndexRouteImport } from './routes/register.index'
+import { Route as RegisterBusinessRouteImport } from './routes/register.business'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -59,9 +63,29 @@ const ImpressumRoute = ImpressumRouteImport.update({
   path: '/impressum',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const RegistrierenRoute = RegistrierenRouteImport.update({
   id: '/registrieren',
   path: '/registrieren',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BetriebDashboardRoute = BetriebDashboardRouteImport.update({
+  id: '/betrieb_/dashboard',
+  path: '/betrieb/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RegisterIndexRoute = RegisterIndexRouteImport.update({
+  id: '/register/',
+  path: '/register/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RegisterBusinessRoute = RegisterBusinessRouteImport.update({
+  id: '/register/business',
+  path: '/register/business',
   getParentRoute: () => rootRouteImport,
 } as any)
 
@@ -74,7 +98,11 @@ export interface FileRoutesByFullPath {
   '/dashboard': typeof DashboardRoute
   '/datenschutz': typeof DatenschutzRoute
   '/impressum': typeof ImpressumRoute
+  '/login': typeof LoginRoute
   '/registrieren': typeof RegistrierenRoute
+  '/betrieb/dashboard': typeof BetriebDashboardRoute
+  '/register/business': typeof RegisterBusinessRoute
+  '/register/': typeof RegisterIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -85,7 +113,11 @@ export interface FileRoutesByTo {
   '/dashboard': typeof DashboardRoute
   '/datenschutz': typeof DatenschutzRoute
   '/impressum': typeof ImpressumRoute
+  '/login': typeof LoginRoute
   '/registrieren': typeof RegistrierenRoute
+  '/betrieb/dashboard': typeof BetriebDashboardRoute
+  '/register/business': typeof RegisterBusinessRoute
+  '/register': typeof RegisterIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -97,7 +129,11 @@ export interface FileRoutesById {
   '/dashboard': typeof DashboardRoute
   '/datenschutz': typeof DatenschutzRoute
   '/impressum': typeof ImpressumRoute
+  '/login': typeof LoginRoute
   '/registrieren': typeof RegistrierenRoute
+  '/betrieb_/dashboard': typeof BetriebDashboardRoute
+  '/register/business': typeof RegisterBusinessRoute
+  '/register/': typeof RegisterIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -110,7 +146,11 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/datenschutz'
     | '/impressum'
+    | '/login'
     | '/registrieren'
+    | '/betrieb/dashboard'
+    | '/register/business'
+    | '/register/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -121,7 +161,11 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/datenschutz'
     | '/impressum'
+    | '/login'
     | '/registrieren'
+    | '/betrieb/dashboard'
+    | '/register/business'
+    | '/register'
   id:
     | '__root__'
     | '/'
@@ -132,7 +176,11 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/datenschutz'
     | '/impressum'
+    | '/login'
     | '/registrieren'
+    | '/betrieb_/dashboard'
+    | '/register/business'
+    | '/register/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -144,7 +192,11 @@ export interface RootRouteChildren {
   DashboardRoute: typeof DashboardRoute
   DatenschutzRoute: typeof DatenschutzRoute
   ImpressumRoute: typeof ImpressumRoute
+  LoginRoute: typeof LoginRoute
   RegistrierenRoute: typeof RegistrierenRoute
+  BetriebDashboardRoute: typeof BetriebDashboardRoute
+  RegisterBusinessRoute: typeof RegisterBusinessRoute
+  RegisterIndexRoute: typeof RegisterIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -205,11 +257,39 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ImpressumRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/registrieren': {
       id: '/registrieren'
       path: '/registrieren'
       fullPath: '/registrieren'
       preLoaderRoute: typeof RegistrierenRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/betrieb_/dashboard': {
+      id: '/betrieb_/dashboard'
+      path: '/betrieb/dashboard'
+      fullPath: '/betrieb/dashboard'
+      preLoaderRoute: typeof BetriebDashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/register/': {
+      id: '/register/'
+      path: '/register'
+      fullPath: '/register/'
+      preLoaderRoute: typeof RegisterIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/register/business': {
+      id: '/register/business'
+      path: '/register/business'
+      fullPath: '/register/business'
+      preLoaderRoute: typeof RegisterBusinessRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -224,7 +304,11 @@ const rootRouteChildren: RootRouteChildren = {
   DashboardRoute: DashboardRoute,
   DatenschutzRoute: DatenschutzRoute,
   ImpressumRoute: ImpressumRoute,
+  LoginRoute: LoginRoute,
   RegistrierenRoute: RegistrierenRoute,
+  BetriebDashboardRoute: BetriebDashboardRoute,
+  RegisterBusinessRoute: RegisterBusinessRoute,
+  RegisterIndexRoute: RegisterIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
