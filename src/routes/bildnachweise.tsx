@@ -1,0 +1,5 @@
+import { createFileRoute } from '@tanstack/react-router'
+export const Route = createFileRoute('/bildnachweise')({ component: ImageCredits })
+function ImageCredits() {
+  return <article className="container legal-page"><span className="eyebrow">TRANSPARENZ GEHÖRT DAZU</span><h1>Bildnachweise</h1><h2 style={{fontSize:24,marginBottom:15}}>Stadtaufnahme</h2><p>„Steyr Spitalmühlwehr Ortskai Michaelerkirche Taborturm“ – Isiwal/Wikimedia Commons/<a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noreferrer">CC BY-SA 4.0</a>. Für Werkly verkleinert, komprimiert, im Layout zugeschnitten und mit Farbverläufen überlagert. Die bearbeiteten Bilddateien stehen ebenfalls unter CC BY-SA 4.0.</p><p><a href="https://commons.wikimedia.org/wiki/File:Steyr_Spitalm%C3%BChlwehr_Ortskai_Michaelerkirche_Taborturm.jpg" target="_blank" rel="noreferrer">Originalaufnahme und Lizenzinformationen ansehen ↗</a></p><h2 style={{fontSize:24,marginBottom:15}}>Handwerker-Motiv</h2><p>Mit KI für diese Frontend-Demo erstellt. Die dargestellte Person ist kein auf Werkly registrierter Betrieb und keine Empfehlung eines konkreten Dienstleisters.</p></article>
+}
